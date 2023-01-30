@@ -1,0 +1,128 @@
+﻿@using MoneyMe.Application.Enum
+@using MoneyMe.Web.Models.Transaction
+@model QuoteModel
+
+<div class="align-items-center justify-content-center" style="margin-top:30px">
+    <div class="shadow p-3 mb-5 bg-white rounded text-center">
+        <div>
+            <p style="font-size:22px">Quote calculator</p>
+        </div>
+        @using (Html.BeginForm("YourQuote", "Transaction", FormMethod.Post))
+        {
+            <form>
+                <div class="form">
+                    <label>Choose product:</label>
+                    @Html.DropDownListFor(m => m.Product, new SelectList(Enum.GetValues(typeof(Product))))
+                </div>
+                <div class="range-wrap" style="width: 75%;">
+                    <input id="amountRange" class="range" type="range" min="@(Model.Customer.AmountRequired - 2000)" max="@(Model.Customer.AmountRequired + 2000)"
+                       step="@(Model.Customer.AmountRequired * 0.1)" value="@Model.Customer.AmountRequired"><br />
+                    <output class="bubble"></output>
+                    <div style=" display: flex;justify-content: space-between;">
+                        <lable>Minumum amount $@(Model.Customer.AmountRequired - 2000)</lable>
+                        <lable>Maximum amount $@(Model.Customer.AmountRequired + 2000)</lable>
+                    </div>
+                    <hr>
+                    <p><b>How much do you need?</b></p>
+                    @*I let this value from its original. due to having a hard time looking a solution how to bind value from slider. later on ill get back to this*@
+                    @Html.Hidden("Amount", Model.Customer.AmountRequired)
+                </div>
+                <div class="range-wrap" style="width: 75%;">
+                    <input id="termRange" class="range" type="range" min="1" max="@(Model.Customer.Term * 12 + 12)"
+                       step="1" value="@(Model.Customer.Term * 12)"><br />
+                    <output class="bubble"></output>
+                    <label><b>how many months?</b></label>
+                    <p>Value: <span id="termValue"></span></p>
+                    @*I let this value from its original. due to having a hard time looking a solution how to bind value from slider. later on ill get back to this*@
+                    @Html.Hidden("Months", Model.Customer.Term * 12)
+                </div>
+                <div class="form">
+                    @Html.TextBoxFor(m => m.Customer.Title, new {@class = "form-control-sm",@readonly = true})
+                    @Html.TextBoxFor(m => m.Customer.FirstName, new {@class = "form-control-sm",@readonly = true})
+                    @Html.TextBoxFor(m => m.Customer.LastName, new {@class = "form-control-sm",@readonly = true})
+                    @Html.HiddenFor(m => m.Customer.Id)
+                </div>
+                <div class="form">
+                    @Html.TextBoxFor(m => m.Customer.Email, new {@class = "form-control-sm",@readonly = true})
+                    @Html.TextBoxFor(m => m.Customer.Mobile, new {@class = "form-control-sm",@readonly = true})
+                    @Html.TextBoxFor(m => m.Customer.DateOfBirth, new {@class = "form-control-sm",@readonly = true})
+                </div>
+                <div>
+                    <button type="submit" style="color:white; background-color:greenyellow; margin-top:10px" class="btn btn-primary btn-lg">Calculate quote</button>
+                </div>
+                <div style="margin-top:10px">
+                    <label style="color:grey">Quote does not affect your credit score</label>
+                </div>
+            </form>
+        }
+    </div>
+</div>
+
+<style>
+    .form {
+        margin-top: 10px;
+    }
+
+    .range-wrap {
+        position: relative;
+        margin: 0 auto 3rem;
+    }
+
+    .range {
+        width: 100%;
+    }
+
+    .bubble {
+        background: blue;
+        color: white;
+        padding: 4px 12px;
+        position: absolute;
+        border-radius: 4px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+        .bubble::after {
+            content: "";
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: blue;
+            top: -1px;
+            left: 50%;
+        }
+
+    body {
+        margin: 2rem;
+    }
+</style>
+<script>
+    const allRanges = document.querySelectorAll(".range-wrap");
+    allRanges.forEach(wrap => {
+        const range = wrap.querySelector(".range");
+        const bubble = wrap.querySelector(".bubble");
+
+        range.addEventListener("input", () => {
+            setBubble(range, bubble);
+        });
+        setBubble(range, bubble);
+    });
+
+    function setBubble(range, bubble) {
+        const val = range.value;
+        const min = range.min ? range.min : 0;
+        const max = range.max ? range.max : 100;
+        const newVal = Number(((val - min) * 100) / (max - min));
+        bubble.innerHTML = "$" + val;
+
+        bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
+    }
+
+    var slider = document.getElementById("termRange");
+    var output = document.getElementById("termValue");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function () {
+        output.innerHTML = this.value;
+    }
+</script>

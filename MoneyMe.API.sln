@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyMe.API", "MoneyMe.API\MoneyMe.API.csproj", "{07507316-B9BE-4352-85EC-79ECF6F66996}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyMe.API", "MoneyMe.API\MoneyMe.API.csproj", "{07507316-B9BE-4352-85EC-79ECF6F66996}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyMe.Application", "MoneyMe.Application\MoneyMe.Application.csproj", "{4164C5CD-99CD-4DFC-B92D-5BBED9066256}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyMe.Domain", "MoneyMe.Domain\MoneyMe.Domain.csproj", "{8D9D91B8-9CAD-4329-AEBE-78E6451D4963}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyMe.Infrastructure", "MoneyMe.Infrastructure\MoneyMe.Infrastructure.csproj", "{0AF6B40D-FF29-4536-AE43-9AE7C729C282}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyMe.Web", "MoneyMe.Web\MoneyMe.Web.csproj", "{0B713F36-EBB6-47AF-A1C9-A5F67C1A0089}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{07507316-B9BE-4352-85EC-79ECF6F66996}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07507316-B9BE-4352-85EC-79ECF6F66996}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07507316-B9BE-4352-85EC-79ECF6F66996}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4164C5CD-99CD-4DFC-B92D-5BBED9066256}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4164C5CD-99CD-4DFC-B92D-5BBED9066256}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4164C5CD-99CD-4DFC-B92D-5BBED9066256}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4164C5CD-99CD-4DFC-B92D-5BBED9066256}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D9D91B8-9CAD-4329-AEBE-78E6451D4963}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D9D91B8-9CAD-4329-AEBE-78E6451D4963}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D9D91B8-9CAD-4329-AEBE-78E6451D4963}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D9D91B8-9CAD-4329-AEBE-78E6451D4963}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AF6B40D-FF29-4536-AE43-9AE7C729C282}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AF6B40D-FF29-4536-AE43-9AE7C729C282}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AF6B40D-FF29-4536-AE43-9AE7C729C282}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AF6B40D-FF29-4536-AE43-9AE7C729C282}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B713F36-EBB6-47AF-A1C9-A5F67C1A0089}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B713F36-EBB6-47AF-A1C9-A5F67C1A0089}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B713F36-EBB6-47AF-A1C9-A5F67C1A0089}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B713F36-EBB6-47AF-A1C9-A5F67C1A0089}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,94 @@
+﻿@using MoneyMe.Web.Models.Transaction
+@model QuoteModel
+
+<div class="align-items-center justify-content-center" style="margin-top:30px">
+    <div class="shadow p-3 mb-5 bg-white rounded text-center">
+        <div>
+            <p class="formTitle">Your quote</p>
+        </div>
+         @using (Html.BeginForm("ApplyNow", "Transaction", FormMethod.Post))
+        {
+            <div class ="outline">
+                <label class="formTitle">Your inforamtion</label>
+                <label class="informationMember" style="color:lightseagreen; padding-top: 8px">Edit</label>
+            </div>
+            <div class="outline">
+                <label class="informationMember">Name</label>
+                <label class="informationMember">@Model.Name</label>
+                @Html.HiddenFor(m => m.Name)
+            </div>
+            <div class="outline">
+                <label class="informationMember">Mobile</label>
+                <label class="informationMember">@Model.Customer.Mobile</label>
+                @Html.HiddenFor(m => m.Customer.Mobile)
+            </div>
+            <div class="outline">
+                <label class="informationMember">Email</label>
+                <label class="informationMember">@Model.Customer.Email</label>
+                @Html.HiddenFor(m => m.Customer.Email)
+            </div>
+            <div class="outline" style="margin-top:10px">
+                <label class="formTitle">Finance Details</label>
+                <label class="informationMember" style="color:lightseagreen; padding-top: 8px">Edit</label>
+            </div>
+            <div class="outline">
+                <label class="formTitle">Finance amount</label>
+                <label class="formTitle" style="color:lightseagreen;">$@Model.Customer.AmountRequired</label>
+                @Html.HiddenFor(m => m.Customer.AmountRequired)
+            </div>
+            <div class="outline">
+                <label class="informationMember">--------------------------------------------------</label>
+                @{
+                    string textValue = string.Empty;
+                    if(Model.Months > 24){
+                        textValue = "over 24 months";
+                    }
+                    else if (Model.Months == 24){
+                        textValue = "24 months";
+                    }
+                    else{
+                        textValue = "less than 24 months";
+                    }
+                   <label class="informationMember">@textValue</label>
+                    @Html.HiddenFor(m => m.Repayment)
+                    @Html.HiddenFor(m => m.Customer.DateOfBirth)
+                    @Html.HiddenFor(m => m.Product)
+                    @Html.HiddenFor(m => m.Customer.Id)
+                }
+            </div>
+            <div class="outline">
+                <label class="formTitle">Repayments from</label>
+                <label class="formTitle" style="color:lightseagreen;">$@Model.Repayment</label>
+            </div>
+            <div class="outline">
+                <label class="informationMember">--------------------------------------------------</label>
+                <label class="informationMember">Monthly</label>
+            </div>
+            <div>
+                <button type="submit" style="color:white; background-color:greenyellow; margin-top:10px" class="btn btn-primary btn-lg">Apply now</button>
+            </div>
+            <div style="margin-top:10px;font-size:10px">
+                <p style="color:grey">Total repayments, made up of an establishment fee of $300.00,
+                    interest of$539.60. The repayment amount is based on the variables selected, is subject
+                    to our assesment and suitability, and other important terms and conditions apply
+                </p>
+            </div>
+        }
+    </div>
+</div>
+<style>
+    .outline{
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 20em;
+    }
+    .formTitle{
+        font-size:20px;
+        font-weight:bold;
+        color:grey
+    }
+    .informationMember{
+        font-size: 14px;
+         color:grey
+    }
+</style>
