@@ -34,8 +34,19 @@ namespace MoneyMe.Application.Command.Implementation
                 request = request ?? throw new ArgumentNullException(nameof(request));
                 await using var transaction = await this.genericRepository.BeginTransactionAsync(cancellationToken);
 
-                var customer = this.mapper.Map<CustomerEntity>(request);
-
+                var customer = new CustomerEntity()
+                {
+                    Id = request.Id,
+                    AmountRequired = request.AmountRequired,
+                    Term = request.Term,
+                    Title = request.Title,
+                    FirstName = request.FirstName.Trim(),
+                    LastName = request.LastName.Trim(),
+                    DateOfBirth = Convert.ToDateTime(request.DateOfBirth),
+                    Mobile = request.Mobile,
+                    EmailAddress = request.Email
+                };
+                    
                 var customerFrmDB = await this.customerRepository.GetCustomerByDetails(customer, cancellationToken);
                 if(customerFrmDB != null)
                 {

@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyMe.Domain", "MoneyMe.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyMe.Infrastructure", "MoneyMe.Infrastructure\MoneyMe.Infrastructure.csproj", "{0AF6B40D-FF29-4536-AE43-9AE7C729C282}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyMe.Web", "MoneyMe.Web\MoneyMe.Web.csproj", "{0B713F36-EBB6-47AF-A1C9-A5F67C1A0089}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyMe.Web", "MoneyMe.Web\MoneyMe.Web.csproj", "{0B713F36-EBB6-47AF-A1C9-A5F67C1A0089}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyMe.Test", "MoneyMe.Test\MoneyMe.Test.csproj", "{ED0A744A-363A-4023-939F-289CE7418F94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{0B713F36-EBB6-47AF-A1C9-A5F67C1A0089}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B713F36-EBB6-47AF-A1C9-A5F67C1A0089}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B713F36-EBB6-47AF-A1C9-A5F67C1A0089}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED0A744A-363A-4023-939F-289CE7418F94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED0A744A-363A-4023-939F-289CE7418F94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED0A744A-363A-4023-939F-289CE7418F94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED0A744A-363A-4023-939F-289CE7418F94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

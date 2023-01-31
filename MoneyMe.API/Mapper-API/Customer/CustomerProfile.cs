@@ -15,7 +15,8 @@ namespace MoneyMe.API.Mapper.Customer
                 .ForMember(d => d.FirstName, o => o.MapFrom(frm => frm.FirstName.Trim()))
                 .ForMember(d => d.LastName, o => o.MapFrom(frm => frm.LastName.Trim()))
                 .ForMember(d => d.DateOfBirth, o => o.MapFrom(frm => Convert.ToDateTime(frm.DateOfBirth.Trim())))
-                .ForMember(d => d.EmailAddress, o => o.MapFrom(frm => frm.Email.Trim()));
+                .ForMember(d => d.EmailAddress, o => o.MapFrom(frm => frm.Email.Trim()))
+                .ForMember(d => d.Id, o => o.MapFrom(frm => frm.Id));
         }
     }
 }
