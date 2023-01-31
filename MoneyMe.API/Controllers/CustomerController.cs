@@ -33,7 +33,7 @@ namespace MoneyMe.API.Controllers
                 {
                     return BadRequest(result.Message);
                 }
-                return Ok(result.Value);
+                return Redirect(result.Value);
             }
             catch (Exception ex)
             {
