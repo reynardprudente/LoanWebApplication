@@ -111,5 +111,17 @@ namespace MoneyMe.Web.Controllers
                 return Json(new { status = "error", message = ex.Message });
             }
         }
+
+        ///Not implemented because the details is kind a vague 
+        public IActionResult EditInformation()
+        {
+            return View();
+        }
+
+        ///Not implemented because the details is kind a vague 
+        public IActionResult EditFinanceDetails()
+        {
+            return View();
+        }
     }
 }

@@ -10,7 +10,7 @@
         {
             <div class ="outline">
                 <label class="formTitle">Your inforamtion</label>
-                <label class="informationMember" style="color:lightseagreen; padding-top: 8px">Edit</label>
+                <button type="button" class="btn btn-light" style="color:lightseagreen;" onclick="editInfo()">Edit</button>
             </div>
             <div class="outline">
                 <label class="informationMember">Name</label>
@@ -29,7 +29,7 @@
             </div>
             <div class="outline" style="margin-top:10px">
                 <label class="formTitle">Finance Details</label>
-                <label class="informationMember" style="color:lightseagreen; padding-top: 8px">Edit</label>
+                <button type="button" class="btn btn-light" style="color:lightseagreen;" onclick="editFinaceDetails()">Edit</button>
             </div>
             <div class="outline">
                 <label class="formTitle">Finance amount</label>
@@ -39,21 +39,23 @@
             <div class="outline">
                 <label class="informationMember">--------------------------------------------------</label>
                 @{
+                    var originalMonts = Model.Customer.Term * 12;
                     string textValue = string.Empty;
-                    if(Model.Months > 24){
-                        textValue = "over 24 months";
+                    if (Model.Months > originalMonts)
+                    {
+                        textValue = $"over {originalMonts} months";
                     }
                     else if (Model.Months == 24){
-                        textValue = "24 months";
+                        textValue = $"{originalMonts} months";
                     }
                     else{
-                        textValue = "less than 24 months";
+                        textValue = $"less than {originalMonts} months";
                     }
-                   <label class="informationMember">@textValue</label>
-                    @Html.HiddenFor(m => m.Repayment)
-                    @Html.HiddenFor(m => m.Customer.DateOfBirth)
-                    @Html.HiddenFor(m => m.Product)
-                    @Html.HiddenFor(m => m.Customer.Id)
+                       <label class="informationMember">@textValue</label>
+                        @Html.HiddenFor(m => m.Repayment)
+                        @Html.HiddenFor(m => m.Customer.DateOfBirth)
+                        @Html.HiddenFor(m => m.Product)
+                        @Html.HiddenFor(m => m.Customer.Id)
                 }
             </div>
             <div class="outline">
@@ -69,7 +71,7 @@
             </div>
             <div style="margin-top:10px;font-size:10px">
                 <p style="color:grey">Total repayments, made up of an establishment fee of $300.00,
-                    interest of$539.60. The repayment amount is based on the variables selected, is subject
+                    interest of $539.60. The repayment amount is based on the variables selected, is subject
                     to our assesment and suitability, and other important terms and conditions apply
                 </p>
             </div>
@@ -92,3 +94,14 @@
          color:grey
     }
 </style>
+<script>
+    function editInfo() {
+        ///Not implemented because the details is kind a vague
+        alert("edit information")
+    }
+
+    function editFinaceDetails(){
+        ///Not implemented because the details is kind a vague
+        alert("edit finance details")
+    }
+</script>

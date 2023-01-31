@@ -24,17 +24,15 @@
                     </div>
                     <hr>
                     <p><b>How much do you need?</b></p>
-                    @*I let this value from its original. due to having a hard time looking a solution how to bind value from slider. later on ill get back to this*@
-                    @Html.Hidden("Amount", Model.Customer.AmountRequired)
+                    @Html.Hidden("Amount", "", new {@id = "mortage"})
                 </div>
                 <div class="range-wrap" style="width: 75%;">
                     <input id="termRange" class="range" type="range" min="1" max="@(Model.Customer.Term * 12 + 12)"
                        step="1" value="@(Model.Customer.Term * 12)"><br />
                     <output class="bubble"></output>
                     <label><b>how many months?</b></label>
-                    <p>Value: <span id="termValue"></span></p>
-                    @*I let this value from its original. due to having a hard time looking a solution how to bind value from slider. later on ill get back to this*@
-                    @Html.Hidden("Months", Model.Customer.Term * 12)
+                    @Html.Hidden("Months","",  new {@id = "month"})
+                    @Html.HiddenFor(m => m.Customer.Term)
                 </div>
                 <div class="form">
                     @Html.TextBoxFor(m => m.Customer.Title, new {@class = "form-control-sm",@readonly = true})
@@ -48,7 +46,9 @@
                     @Html.TextBoxFor(m => m.Customer.DateOfBirth, new {@class = "form-control-sm",@readonly = true})
                 </div>
                 <div>
-                    <button type="submit" style="color:white; background-color:greenyellow; margin-top:10px" class="btn btn-primary btn-lg">Calculate quote</button>
+                    <button onclick="myFunction()" type="submit" style="color:white; background-color:greenyellow; margin-top:10px" class="btn btn-primary btn-lg">
+                        Calculate quote
+                    </button>
                 </div>
                 <div style="margin-top:10px">
                     <label style="color:grey">Quote does not affect your credit score</label>
@@ -118,11 +118,10 @@
         bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
     }
 
-    var slider = document.getElementById("termRange");
-    var output = document.getElementById("termValue");
-    output.innerHTML = slider.value;
-
-    slider.oninput = function () {
-        output.innerHTML = this.value;
+    function myFunction() {
+        var amountRangeSlider = document.getElementById("amountRange");
+        var monthRangeSlider = document.getElementById("termRange");
+        document.getElementById('mortage').value = amountRangeSlider.value;
+        document.getElementById('month').value = monthRangeSlider.value;
     }
 </script>

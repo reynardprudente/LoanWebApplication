@@ -18,8 +18,7 @@ namespace MoneyMe.Web.Service.Query.Implementation
                 {
                     case "ProductA":
                         {
-                            var denominator = Math.Pow(1, months) - 1;
-                            repaymentAmount = Math.Round(denominator * mortgage, 2);
+                            repaymentAmount = Math.Round((double)mortgage / months, 2);
                             break;
                         }
                     case "ProductB":
